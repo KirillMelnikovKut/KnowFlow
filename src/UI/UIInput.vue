@@ -22,7 +22,7 @@
       v-else
       :class="classes"
       :type="type"
-      :placeholder="$t('inputPlaceholder')"
+      :placeholder="placeholder"
       :value="modelValue"
       :disabled="disabled"
       @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"

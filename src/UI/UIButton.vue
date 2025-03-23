@@ -132,8 +132,8 @@ const classes = computed(() => [
   }
 
   &--secondary {
-    background-color: #874BAD;
-    color: white;
+    background-color: #fff;
+    color: black;
   }
 
   &--attention {

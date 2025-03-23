@@ -34,10 +34,12 @@ const classes = computed(() => [
 
   &--small {
     font-size: 16px;
+    font-weight: normal;
   }
 
   &--medium {
     font-size: 24px;
+    font-weight: normal;
   }
 
   &--large {

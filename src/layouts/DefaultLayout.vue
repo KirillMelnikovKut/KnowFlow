@@ -22,10 +22,9 @@ import Sidebar from "@/components/Sidebar.vue";
   height: 100%;
 }
 .page-content {
-  padding: 20px;
 }
 .main-layout{
   display: flex;
-  gap: 48px;
+  gap: 28px;
 }
 </style>

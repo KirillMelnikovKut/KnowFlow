@@ -3,7 +3,7 @@
     <UIButton label="KnowFlow" variant="transparent" icon="logo.svg" icon-right tag="h1" size="large" colorText="#07286F" />
     <div class="search">
       <UIInput icon="search.svg" placeholder="Search..." />
-      <UIButton label="Найти" size="small" />
+      <UIButton label="Найти" size="small" colorText="#fff" />
     </div>
     <div class="profile-info">
       <div class="navbar">
@@ -12,8 +12,8 @@
       </div>
       <div class="profile-info__user">
         <div class="profile-name">
-          <UITItile text="Иван Иванов" tag="h2" size="medium" />
-          <UITItile text="Студент группы А" tag="h5" size="small" />
+          <UITItile text="Иван Иванов" tag="h2" size="medium" color="#07286F" />
+          <UITItile text="Студент группы А" tag="h5" size="small" color="#678AD6" />
         </div>
         <UIButton variant="transparent" icon="profileUnknown.svg" icon-size="64px"/>
       </div>
@@ -50,6 +50,9 @@ import UIInput from "@/UI/UIInput.vue";
   display: flex;
   align-items: center;
   gap: 16px;
+}
+.profile-name{
+  text-align: right;
 }
 .profile-info__user{
   display: flex;

@@ -8,19 +8,21 @@ import MainPage from '@/views/MainPage.vue';
 import {LOCAL_STORAGE_KEYS} from "@/utils/constant/localStorage.ts";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import EmptyLayout from "@/layouts/EmptyLayout.vue";
+import AuthPage from "@/views/AuthPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         component: DefaultLayout,
         children: [
-            { path: 'about', component: MainPage },
+            { path: '', component: MainPage },
         ],
     },
     {
-        path: '/login',
+        path: '/',
         component: EmptyLayout,
         children: [
+            { path: 'auth', component: AuthPage },
         ],
     },
 ];
