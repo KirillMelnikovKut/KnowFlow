@@ -9,7 +9,7 @@ import { computed } from 'vue';
 import type {Size} from "@/utils/types/types.ts";
 
 interface Props {
-  text: string;
+  text?: string;
   size?: Size;
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   color?: string;

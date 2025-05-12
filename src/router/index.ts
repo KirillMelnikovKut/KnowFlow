@@ -9,6 +9,11 @@ import {LOCAL_STORAGE_KEYS} from "@/utils/constant/localStorage.ts";
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 import EmptyLayout from "@/layouts/EmptyLayout.vue";
 import AuthPage from "@/views/AuthPage.vue";
+import CoursePage from "@/views/CoursePage.vue";
+import ProfilePage from "@/views/ProfilePage.vue";
+import SupportPage from "@/views/SupportPage.vue";
+import QuestsPage from "@/views/QuestsPage.vue";
+import AdminPage from "@/views/AdminPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -16,6 +21,9 @@ const routes: Array<RouteRecordRaw> = [
         component: DefaultLayout,
         children: [
             { path: '', component: MainPage },
+            { path: '/profile', component: ProfilePage },
+            { path: "/support", component: SupportPage },
+            { path: "/course/:courseId", component: CoursePage, props: true },
         ],
     },
     {
@@ -23,6 +31,8 @@ const routes: Array<RouteRecordRaw> = [
         component: EmptyLayout,
         children: [
             { path: 'auth', component: AuthPage },
+            {path: 'questsgame', component: QuestsPage},
+            {path: 'admin', component: AdminPage },
         ],
     },
 ];
@@ -36,6 +46,19 @@ router.beforeEach((to, _from, next) => {
         LOCAL_STORAGE_KEYS['authenticated'],
         false,
     );
+
+    const hasVisitedBefore = useLocalStorage<boolean>(
+        LOCAL_STORAGE_KEYS['hasVisited'],
+        false
+    );
+
+    if (!hasVisitedBefore.value) {
+        hasVisitedBefore.value = true;
+
+        if (to.path !== '/questsgame') {
+            return next('/questsgame');
+        }
+    }
 
     if (to.name === 'Auth') {
         authenticated.value = false;

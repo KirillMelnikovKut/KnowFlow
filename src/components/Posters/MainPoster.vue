@@ -21,6 +21,7 @@ import UIButton from "@/UI/UIButton.vue";
 <style scoped>
 .mainPoster {
   display: flex;
+  padding: 28px;
   align-items: center;
   justify-content: space-between;
   max-width: 1050px;
@@ -29,6 +30,7 @@ import UIButton from "@/UI/UIButton.vue";
   height: 100%;
   background-color: #678AD6;
   border-radius: 15px;
+  margin-bottom: 20px;
 }
 .poster-left {
   display: flex;

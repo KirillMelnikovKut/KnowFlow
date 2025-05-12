@@ -3,7 +3,7 @@ import type { AxiosInstance } from 'axios';
 import { useAuthStore } from '@/stores/auth';
 
 const apiClient: AxiosInstance = axios.create({
-    baseURL: 'https://your-api-url.com/api', // Замените на ваш API URL
+    baseURL: 'http://127.0.0.1:8000',
     headers: {
         'Content-Type': 'application/json',
     },

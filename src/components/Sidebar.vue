@@ -1,23 +1,29 @@
 <template>
   <div class="sidebar">
     <div class="sidebar-navigation">
-      <UIButton
+      <RouterLink
           v-for="(item, index) in menuItems"
           :key="index"
-          :label="item.label"
-          :variant="item.variant"
-          :icon="item.icon"
-          :icon-left="item.iconLeft"
-          :colorText="item.colorText"
-          :size="item.size"
-      />
+          :to="item.route"
+          class="router-link"
+      >
+        <UIButton
+            :label="item.label"
+            :variant="item.variant"
+            :icon="item.icon"
+            :icon-left="item.iconLeft"
+            :colorText="item.colorText"
+            :size="item.size"
+        />
+      </RouterLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { RouterLink } from 'vue-router';
 import UIButton from "@/UI/UIButton.vue";
-import type {Size, Variant} from "@/utils/types/types.ts";
+import type { Size, Variant } from "@/utils/types/types.ts";
 
 interface MenuItem {
   label: string;
@@ -26,6 +32,7 @@ interface MenuItem {
   iconLeft: boolean;
   colorText: string;
   size: Size;
+  route: string;
 }
 
 const menuItems: MenuItem[] = [
@@ -36,14 +43,7 @@ const menuItems: MenuItem[] = [
     iconLeft: true,
     colorText: "#07286F",
     size: "small",
-  },
-  {
-    label: "База знаний",
-    variant: "transparent",
-    icon: "dataIcon.svg",
-    iconLeft: true,
-    colorText: "#07286F",
-    size: "small",
+    route: "/profile",
   },
   {
     label: "Доступные курсы",
@@ -52,6 +52,7 @@ const menuItems: MenuItem[] = [
     iconLeft: true,
     colorText: "#07286F",
     size: "small",
+    route: "/",
   },
   {
     label: "Поддержка",
@@ -60,6 +61,7 @@ const menuItems: MenuItem[] = [
     iconLeft: true,
     colorText: "#07286F",
     size: "small",
+    route: "/support",
   },
 ];
 </script>
@@ -69,5 +71,10 @@ const menuItems: MenuItem[] = [
   min-height: 100%;
   max-width: 260px;
   width: 100%;
+}
+
+.router-link {
+  display: block;
+  text-decoration: none;
 }
 </style>

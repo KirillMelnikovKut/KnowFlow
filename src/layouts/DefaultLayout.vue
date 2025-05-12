@@ -22,6 +22,8 @@ import Sidebar from "@/components/Sidebar.vue";
   height: 100%;
 }
 .page-content {
+  flex-grow: 1; /* Занимает оставшееся пространство */
+  max-width: 1200px; /* Ограничение для содержимого */
 }
 .main-layout{
   display: flex;

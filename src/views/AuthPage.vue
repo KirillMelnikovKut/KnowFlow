@@ -3,7 +3,8 @@
     <div class="auth-page-block">
       <UITItile :text="isLoginMode ? 'Вход' : 'Регистрация'" size="large" color="#07286F"/>
       <form class="auth-form" @submit.prevent="handleSubmit">
-        <UIInput v-if="!isLoginMode" v-model="name" type="text" placeholder="Имя" required />
+        <UIInput v-if="!isLoginMode" v-model=" first_name" type="text" placeholder="Имя" required />
+        <UIInput v-if="!isLoginMode" v-model="last_name" type="text" placeholder="Фамилия" required />
         <UIInput v-model="email" type="email" placeholder="Email" required />
         <UIInput v-model="password" type="password" placeholder="Пароль" required />
         <UIButton class="auth-button" type="submit" :label="isLoginMode ? 'Войти' : 'Зарегистрироваться'" size="small" colorText="#fff" />
@@ -24,7 +25,8 @@ import UIButton from "@/UI/UIButton.vue";
 
 const email = ref('');
 const password = ref('');
-const name = ref('');
+const first_name = ref('');
+const last_name = ref('');
 const errorMessage = ref('');
 const isLoginMode = ref(true);
 const router = useRouter();
@@ -38,16 +40,17 @@ const toggleMode = () => {
 const handleSubmit = async () => {
   try {
     if (isLoginMode.value) {
-      const response = await apiClient.post('/login', { email: email.value, password: password.value });
-      authStore.setToken(response.data.token);
+      const response = await apiClient.post('/auth/login', { email: email.value, password: password.value });
+      authStore.setToken(response.data.access_token);
       authStore.setUser(response.data.user);
     } else {
-      const response = await apiClient.post('/register', {
-        name: name.value,
+      const response = await apiClient.post('/auth/register', {
+        first_name: first_name.value,
+        last_name: last_name.value,
         email: email.value,
         password: password.value,
       });
-      authStore.setToken(response.data.token);
+      authStore.setToken(response.data.access_token);
       authStore.setUser(response.data.user);
     }
     router.push('/');
