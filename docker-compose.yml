@@ -9,9 +9,3 @@ services:
     restart: unless-stopped
     ports:
       - "8080:80"
-    networks:
-      - knowflow-network
-
-networks:
-  knowflow-network:
-    driver: bridge 
