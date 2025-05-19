@@ -1,7 +1,7 @@
 <template>
   <div class="mainPoster">
     <div class="poster-left">
-      <UITItile text="С возвращением, Иван!"  size="large" color="#fff"/>
+      <UITItile :text="`С возвращением, ${auth.user?.first_name}`" size="large" color="#fff"/>
       <UITItile text="Проходи курсы вместе с KnowFlow и не теряй баллы опыта" size="medium" color="#fff"/>
       <UIButton variant="secondary" class="poster-button" label="К просмотру" size="small" colorText="#678AD6"/>
     </div>
@@ -16,6 +16,8 @@
 <script setup lang="ts">
 import UITItile from "@/UI/UITItile.vue";
 import UIButton from "@/UI/UIButton.vue";
+import {useAuthStore} from "@/stores/auth.ts";
+const auth = useAuthStore();
 </script>
 
 <style scoped>
