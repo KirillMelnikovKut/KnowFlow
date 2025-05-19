@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: knowflow
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    networks:
+      - knowflow-network
+
+networks:
+  knowflow-network:
+    driver: bridge 
